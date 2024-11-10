@@ -21,5 +21,5 @@ application
 │   ├── app.py               # Flask application code
 ├── frontend/
 │   ├── index.html           # HTML for frontend UI
-└── Database/
+└── database/
     ├── init.sql             # SQL file for database initialization
