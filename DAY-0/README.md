@@ -19,7 +19,6 @@ This project is a basic three-tier application with a **frontend**, **backend**,
 application
 ├── backend/
 │   ├── app.py               # Flask application code
-│   ├── requirements.txt     # Flask dependencies
 ├── frontend/
 │   ├── index.html           # HTML for frontend UI
 └── Database/
