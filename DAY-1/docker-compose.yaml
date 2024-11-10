@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile.multistage
+    container_name: backend
+    ports:
+      - "7000:7000"  # Expose backend on port 7000
+    networks:
+      - app-network
+    environment:
+      - DB_HOST=172.21.147.236  # This should match the name of the DB service defined below
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=simple_app
+    depends_on:
+      - db  # Ensure the database is available before starting the backend
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: frontend
+    ports:
+      - "8005:80"  # Expose frontend on port 80
+    networks:
+      - app-network
+    depends_on:
+      - backend  # Ensure backend service is started before frontend
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root   # Set root password for MySQL
+      MYSQL_DATABASE: simple_app  # The name of the database to create
+      MYSQL_USER: root            # The MySQL user to create
+      MYSQL_PASSWORD: root        # Password for the MySQL user
+    ports:
+      - "3307:3306"  # Expose MySQL on port 3306
+    networks:
+      - app-network
+    volumes:
+      - db_data:/var/lib/mysql   # Persist the MySQL data
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:  # This will store MySQL data persistently
