@@ -23,3 +23,13 @@ application
 │   ├── index.html           # HTML for frontend UI
 └── database/
     ├── init.sql             # SQL file for database initialization
+
+
+## Command to run frontend code on the local machine
+
+python3 -m http.server <port on which we want to execute the frontend code>
+
+## command to run backend code on the local machine
+
+pip install -r requirements.txt
+python app.py
