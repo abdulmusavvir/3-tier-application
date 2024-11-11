@@ -18,12 +18,9 @@
 
     <script>
         // Get the current hostname dynamically
-        const backendHost = '172.21.147.236';
-        const backendPort = '30070';
+        const backendHost = window.location.hostname;
+        const backendPort = window.location.port;
         const backendURL = `http://${backendHost}:${backendPort}/api/users`;
-        // const backendHost = window.location.hostname;
-        //  const backendPort = window.location.port;
-        //  const backendURL = `http://${backendHost}:${backendPort}/api/users`;
 
         // Submit form and send data to backend API
         document.getElementById('user-form').addEventListener('submit', function(e) {
