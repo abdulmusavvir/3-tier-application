@@ -7,7 +7,7 @@ https://kind.sigs.k8s.io/docs/user/quick-start/#installation
 
 ### kubectl port-forward --address 0.0.0.0 svc/backend-service 30070:7000 ###
 
-this is for backend
+this is for backend before running the frontend we need to execute the backend port-forwarding first
 
 ### kubectl port-forward --address 0.0.0.0 svc/backend-service 30080:80 ###
 this is for frontend
