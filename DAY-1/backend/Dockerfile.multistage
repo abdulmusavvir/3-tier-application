@@ -9,4 +9,5 @@ COPY --chown=1724:1724 --from=build /usr/local/lib/python3.9/site-packages /usr/
 WORKDIR /app
 COPY --chown=1724:1724 --from=build /app/app.py /app/
 ENV DB_USER DB_PASSWORD DB_HOST DB_NAME
+EXPOSE 7000
 CMD ["python3","app.py"]
