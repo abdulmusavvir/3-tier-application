@@ -1,0 +1,12 @@
+FROM python:3.9 AS build
+WORKDIR /app
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY backend/app.py .
+USER 1724
+FROM python:3.9-alpine AS Multistage
+COPY --chown=1724:1724 --from=build /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+WORKDIR /app
+COPY --chown=1724:1724 --from=build /app/app.py /app/
+ENV DB_USER DB_PASSWORD DB_HOST DB_NAME
+CMD ["python3","app.py"]
