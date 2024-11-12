@@ -7,3 +7,4 @@ This project is a **Simple User Management Application** that demonstrates a bas
 - **Day 0**: Basic application setup with the frontend, backend, and database running locally.
 - **Day 1**: Dockerize the application components and set up configuration files to streamline deployment.
 - **Day 2**: Set up the kubernetes cluster and added Deployment, configmap, secrets, service components.
+- **Day 3**: Set up the HPA, PV, PVC and added into Deployment.
