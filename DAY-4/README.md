@@ -1,6 +1,8 @@
 ### Setting up Ingress Controller ###
 
 curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+or else take the Custom Resource file from this repository
+kubectl apply -f deploy.yaml
 
 
 
