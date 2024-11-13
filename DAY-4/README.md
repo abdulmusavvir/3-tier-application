@@ -7,7 +7,7 @@ curl -O https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/s
 
 ## After that execute kubectl apply -f deploy.yaml, This will create the necessary ingress controller inside ingress-nginx namespaces ##
 
-## Check ingress-nginx-controller deployment and ingress-nginx-controller  in ingress-nginx namespace. the If ingress-nginx-controller is throwin FailedScheduling then execute kubectl get deployment ingress-nginx-controller -n ingress-nginx -o yaml and remove the nodeSelector from spec.template.spec ##
+## Check ingress-nginx-controller deployment and ingress-nginx-controller  in ingress-nginx namespace. the If ingress-nginx-controller is throwing FailedScheduling then execute kubectl get deployment ingress-nginx-controller -n ingress-nginx -o yaml and remove the nodeSelector from spec.template.spec ##
 
 
 
