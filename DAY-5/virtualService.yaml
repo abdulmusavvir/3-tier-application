@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: 3-tier-virtualservice
+spec:
+  hosts:
+  - "localhost"
+  gateways:
+  - 3tier-gateway
+  http:
+  - match:
+    - uri:
+        exact: "/"
+    route:
+    - destination:
+        host: frontend-service.default.svc.cluster.local
+        port:
+          number: 80
+  - match:
+    - uri:
+        prefix: "/api/users"
+    route:
+    - destination:
+        host: backend-service.default.svc.cluster.local
+        port:
+          number: 7000
