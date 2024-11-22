@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 3-tier-architecture-ingress
+  # annotations:
+  #   nginx.ingress.kubernetes.io/rewrite-target: /  # Optional: Remove /api prefix
+  
+spec:
+  ingressClassName: nginx  # Add this line to specify the IngressClass
+  rules:
+    - host: {{ .Values.hostname }}
+      http:
+        paths:
+        - path: /api
+          pathType: Prefix
+          backend:
+            service:
+              name: backend-service
+              port:
+                number: {{ .Values.backend.backendServicePort }}  # This should be match with the service port not with the container port 
+    - host: {{ .Values.hostname }}
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: frontend-service
+              port:
+                number: {{ .Values.frontend.frontendServicePort }}  # This should be match with the service port not with the container port           
