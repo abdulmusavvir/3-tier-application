@@ -9,8 +9,12 @@ helm install applicationrelease3 DAY-6/3-tier-architecture-project --values DAY-
 
 # Chart.yaml will have the basic information about the helm chart
 
+# To install helm chart for different environment we need to execute helm install with --values argument for eg for prod we will execute following command
+
+helm install applicationrelease3 DAY-6/3-tier-architecture-project --values DAY-6/3-tier-architecture-project/Prod-Values.yaml
 
 # we can have helmfile sync command that will execute both helm install and helm uninstall command. 
+
 helmfile is an utility that we need to install in our system. after that we have to create a helmfile.yaml
 
 releases:
