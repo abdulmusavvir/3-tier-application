@@ -1,0 +1,8 @@
+for frontend service 
+kubectl port-forward --address 0.0.0.0 svc/backend-service 30070:7000
+
+for backend service
+kubectl port-forward --address 0.0.0.0 svc/frontend-service 30080:80
+
+for ingress service
+kubectl port-forward --address 0.0.0.0 svc/ingress-nginx-controller -n ingress-nginx 8008:80
