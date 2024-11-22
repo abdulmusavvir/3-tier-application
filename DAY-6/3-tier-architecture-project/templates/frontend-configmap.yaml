@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+data:
+  BACKEND_URL: {{ .Values.frontend.backendUrl }}
+# here  BACKEND_URL: "http://backend-service:7000/api/users"  is the backend service url and we are using now port forwarding hence we need to give the ip and port(localhostport:serviceport and ip address that we used during port forwarding) manually otherwise
