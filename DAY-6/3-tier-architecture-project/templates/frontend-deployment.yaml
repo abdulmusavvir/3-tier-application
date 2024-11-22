@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.frontend.name }}
+spec:
+  replicas: {{ .Values.frontend.frontendreplicacount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.frontend.label }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.frontend.label }}
+    spec:
+      containers:
+        - name: {{ .Values.frontend.label }}
+          image: {{ .Values.frontend.image }}
+          ports:
+            - containerPort: {{ .Values.frontend.frontendContainerport }}
+          # env:
+          #   - name: BACKEND_URL
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         name: frontend-config
+          #         key: BACKEND_URL
