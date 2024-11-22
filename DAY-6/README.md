@@ -12,9 +12,8 @@ helm install applicationrelease3 DAY-6/3-tier-architecture-project --values DAY-
 
 # we can have helmfile sync command that will execute both helm install and helm uninstall command. 
 helmfile is an utility that we need to install in our system. after that we have to create a helmfile.yaml
----
-releases:
 
+releases:
   - name: helloworld // release name 
     chart: ./helloworld // chart name (chart is in local)
     installed: true // to install and if we want to uninstall it the we heve to make the value to false
@@ -23,13 +22,10 @@ then execute helmfile sync command
 
 if chart is git then we have to install the git utility 
 
----
 repositories:
   - name: helloworld
     url: git+https://github.com/rahulwagh/helmchart@helloworld?ref=master&sparse=0
-
 releases:
-
   - name: helloworld
     chart: helloworld/helloworld
     installed: false 
@@ -38,13 +34,10 @@ releases:
 
 multiple charts
 
----
 releases:
-
   - name: helloworld1
     chart: ./helloworld1
     installed: true
-
   - name: helloworld2
     chart: ./helloworld2
     installed: true
