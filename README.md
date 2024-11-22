@@ -10,3 +10,4 @@ This project is a **Simple User Management Application** that demonstrates a bas
 - **Day 3**: Set up the HPA, PV, PVC and added into Deployment.
 - **Day 4**: Set up the nginx ingress controller for the application and tested successfully.
 - **Day 5**: Set up the istio ingress controller for the application.
+- **Day 6**: Set up the helm chart for the application (for dev and prod environment).
