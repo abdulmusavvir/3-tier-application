@@ -1,0 +1,33 @@
+# Application Tier
+hostname: "localhost"
+backend:
+  name: "backend-deployment"
+  label: "backend"
+  image: "abdulmusavvirrohe/3-tier-application-backend:1.0"
+  containerport: 7000
+  replica: 3
+  backendsecret: "backend-secret"
+  backendvolume: "mysql-storage"
+  pvClaim: "backend-pvc"
+  backendhpamaxreplica: 6
+  backendhpaminreplica: 1
+  backendPvStorageCapacity: "2Gi"
+  backendPVCStoragerequest: "1Gi"
+  backendHostUrl: "MTcyLjIxLjE0Ny4yMzY="
+  backendDBName: "c2ltcGxlX2FwcA=="
+  backendDBUser: "cm9vdA=="
+  backendDBPassword: "cm9vdA=="
+  backendServiceType: "NodePort"
+  backendServicePort: 7000
+  backendContainerPort: 7000
+  backendNodePort: 30070
+
+frontend:
+  backendUrl: "http://172.21.147.236:30070/api/users"
+  name: "frontend-deployment"
+  label: "frontend"
+  image: "abdulmusavvirrohe/3-tier-application-frontend:1.10"
+  frontendContainerport: 80
+  frontendServicePort: 80
+  frontendNodePort: 30080
+  frontendreplicacount: 1
