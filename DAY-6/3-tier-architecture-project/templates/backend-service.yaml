@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  type: {{ .Values.backend.backendServiceType }}
+  selector:
+    app: {{ .Values.backend.label }}
+  ports:
+      # This is the service port 
+    - port: {{ .Values.backend.backendServicePort }}
+      # This is the container port
+      targetPort: {{ .Values.backend.backendContainerPort }}
+      # This is the node port
+      nodePort: {{ .Values.backend.backendNodePort }}
