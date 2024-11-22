@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.backend.name }}
+  labels:
+    app: {{ .Values.backend.label }}
+spec:
+  replicas: {{ .Values.backend.replica }}
+  selector:
+    matchLabels:
+      app: {{ .Values.backend.label }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.backend.label }}
+    spec:
+      containers:
+      - name: {{ .Values.backend.label }}
+        image: {{ .Values.backend.image }}
+        ports:
+        - containerPort: {{ .Values.backend.containerport }}
+          name: app-svc-port
+        envFrom:
+        - secretRef:
+            name: {{ .Values.backend.backendsecret }}
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: {{ .Values.backend.backendvolume }}
+      volumes:
+      - name: {{ .Values.backend.backendvolume }}
+        persistentVolumeClaim:
+          claimName: {{ .Values.backend.pvClaim }}  # Attach the PVC
