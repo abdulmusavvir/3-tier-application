@@ -11,3 +11,4 @@ This project is a **Simple User Management Application** that demonstrates a bas
 - **Day 4**: Set up the nginx ingress controller for the application and tested successfully.
 - **Day 5**: Set up the istio ingress controller for the application.
 - **Day 6**: Set up the helm chart for the application (for dev and prod environment).
+- **Day 7**: Set up the Prometheus,Grafana,AlertManager for the application.
