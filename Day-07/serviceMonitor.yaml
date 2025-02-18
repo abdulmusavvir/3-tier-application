@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: 3-tier-ingress-nginx-monitor   # Name of the ServiceMonitor
+  namespace: monitoring                # Namespace where this ServiceMonitor is deployed
+  labels:
+    release: monitoring                # Label to associate this ServiceMonitor with monitoring release you can execute  kubectl get prometheus monitoring-kube-prometheus-prometheus -n monitoring -o yaml | grep -A5  serviceMonitorSelector and see the serviceMonitorSelector value
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ingress-nginx   # Select services with this label ('app.kubernetes.io/name: ingress-nginx')
+  namespaceSelector:
+    matchNames:
+      - ingress-nginx               # Scrape services only in the 'ingress-nginx' namespace
+  endpoints:
+    - port: metrics                  # The port on which metrics are exposed by the service
+      path: /metrics                  # The path to access the metrics (usually '/metrics')
+      interval: 30s                   # How frequently the metrics are scraped (every 30 seconds)
